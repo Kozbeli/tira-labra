@@ -4,8 +4,8 @@ Tähän repositorioon palautetaa Helsingin yliopiston aineopintojen harjoitusty�
 
 ## **Dokumentaatio**
 
-* [Määrittelydokumentti](./dokumentaatio/määrittelydokumentti.md)
-* [Työaikakirjanpito](./dokumentaatio/työaikakirjanpito.md)
+* [Määrittelydokumentti](./dokumentaatio/maarittelydokumentti.md)
+* [Työaikakirjanpito](./dokumentaatio/tyoaikakirjanpito.md)
 
 ## **Viikkoraportit**
 
