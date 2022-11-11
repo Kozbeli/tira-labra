@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "rsa-encryption"
+version = "0.1.0"
+description = ""
+authors = ["Ossi Ilmanen <ossi.ilmanen@gmail.com>"]
+readme = "README.md"
+packages = [{include = "rsa_encryption"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.2.0"
+coverage = "^6.5.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
