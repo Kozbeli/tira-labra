@@ -8,6 +8,7 @@ packages = [{include = "rsa_encryption"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+rsa = "^4.9"
 
 
 [tool.poetry.group.dev.dependencies]

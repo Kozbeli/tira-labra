@@ -11,3 +11,4 @@ Tähän repositorioon palautetaa Helsingin yliopiston aineopintojen harjoitusty�
 
 * [Viikko 1](./dokumentaatio/viikkoraportti-01.md)
 * [Viikko 2](./dokumentaatio/viikkoraportti-02.md)
+* [Viikko 3](./dokumentaatio/viikkoraportti-03.md)
