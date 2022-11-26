@@ -4,7 +4,7 @@ import rsa
 
 
 def main():
-  (alice_public, alice_private) = generate_key_pair(512)
+  (alice_public, alice_private) = generate_key_pair(1024)
   print(f"\nAlice's public key: {alice_public}\n")
   print(f"\nAlice's private key: {alice_private}\n")
 
