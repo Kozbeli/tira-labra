@@ -1,25 +1,22 @@
-from primes import generate_primes, sieve_of_eratosthenes
+from cypher import Cypher
 from keygenerator import generate_key_pair
 import rsa
 
 
 def main():
-    (alice_public, alice_private) = generate_key_pair(1024)
-    print(f"\nAlice's public key: {alice_public}\n")
-    print(f"\nAlice's private key: {alice_private}\n")
+    cypher = Cypher()
+    (public_key, private_key) = generate_key_pair(2048)
+    print(f"\nAlice's public key: {public_key}\n")
+    print(f"\nAlice's private key: {private_key}\n")
 
-    (bob_public, bob_private) = rsa.newkeys(512)
-    print(f"\nBob's public key: {bob_public}\n")
-    print(f"\nBob's private key: {bob_private}\n")
+    alice_message = "Hello Bob!"
+    print(f"\nAlice's message: {alice_message}\n")
 
-    message = "hello Bob!".encode('utf8')
-    print(f"\nmessage: {message}\n")
+    alice_encrypted = cypher.encrypt(alice_message, public_key)
+    print(f"\nAlice's encrypted message: {alice_encrypted}\n")
 
-    encrypted_message = rsa.encrypt(message, alice_public)
-    print(f"encrypted message: {encrypted_message}\n")
-
-    decrypted_message = rsa.decrypt(encrypted_message, bob_private)
-    print(f"decrypted message: {decrypted_message.decode('utf8')}\n")
+    alice_decrypted = cypher.decrypt(alice_encrypted, private_key)
+    print(f"\nAlice's decrypted message: {alice_decrypted}\n")
 
 
 if __name__ == "__main__":
