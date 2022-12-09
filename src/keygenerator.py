@@ -1,16 +1,16 @@
 import random
 from primegenerator import generate_prime_pair
-from utils import random_between, greatest_common_divisor, modular_inverse
+from utils import random_between, greatest_common_factor, modular_inverse
 
 
 def generate_key_pair(key_size):
-    """Luo julkisen ja yksityisen avainparin.
+    """ Luo julkisen ja yksityisen avainparin.
 
     Args:
         key_size (int): avaimen koko
 
     Returns:
-        tuple: julkisen ja yksityisen avaimen parin
+        tuple: julkinen ja yksityinen avainpari
     """
 
     print(f"\nGenerating key pair with {key_size} bits\n")
@@ -21,10 +21,10 @@ def generate_key_pair(key_size):
     while True:
         public_exponent = random_between(
             pow(2, key_size - 1), pow(2, key_size))
-        print(f"\nGenerated random number: {public_exponent}\n")
-        if greatest_common_divisor(public_exponent, (p - 1) * (q - 1)) == 1:
+        if greatest_common_factor(public_exponent, (p - 1) * (q - 1)) == 1:
             break
 
+    print(f"\nGenerated random number: {public_exponent}\n")
     private_exponent = modular_inverse(public_exponent, (p - 1) * (q - 1))
     public_key = (modulus, public_exponent)
     private_key = (modulus, private_exponent)

@@ -71,7 +71,7 @@ def random_between(a, b):
     return random.randint(a, b)
 
 
-def greatest_common_divisor(a, b):
+def greatest_common_factor(a, b):
     """ Etsii suurimman yhteisen tekijän kahdella luvulla.
 
     Args:

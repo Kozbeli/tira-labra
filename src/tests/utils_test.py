@@ -1,5 +1,5 @@
 import unittest
-from utils import random_between, greatest_common_divisor, modular_inverse, euclidean, rabin_miller_primality_test
+from utils import random_between, greatest_common_factor, modular_inverse, euclidean, rabin_miller_primality_test
 
 
 class TestUtils(unittest.TestCase):
@@ -16,7 +16,7 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(euclidean(252, 105), 21)
 
     def test_greatest_common_divisor(self):
-        self.assertEqual(greatest_common_divisor(252, 105), 21)
+        self.assertEqual(greatest_common_factor(252, 105), 21)
 
     def test_rabin_miller_primality_with_small_primes(self):
         self.assertEqual(rabin_miller_primality_test(2), True)

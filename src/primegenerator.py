@@ -38,7 +38,7 @@ def generate_prime_pair(n):
         n (int): alkulukuparin koko
 
     Returns:
-        tuple: alkulukuparin
+        tuple: alkulukupari
     """
 
     print(f"\nGenerating prime pair with {n} bits\n")
