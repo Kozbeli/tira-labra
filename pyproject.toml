@@ -10,6 +10,8 @@ packages = [{include = "rsa_encryption"}]
 python = "^3.8"
 rsa = "^4.9"
 invoke = "^1.7.3"
+kivy = "^2.1.0"
+virtualenv = "^20.17.1"
 
 
 [tool.poetry.group.dev.dependencies]
