@@ -19,8 +19,31 @@ def euclidean(a, b):
     return b
 
 
+def sieve_of_eratosthenes(number=1000):
+    """ Luo suuren alkulukulistan. Aikavaativuus O(n log log n).
+
+    Args:
+        number (int): luku
+
+    Returns:
+        list: alkulukulista
+    """
+
+    primes = []
+    is_prime = [True] * (number + 1)
+    is_prime[0] = is_prime[1] = False
+
+    for i in range(2, number + 1):
+        if is_prime[i]:
+            primes.append(i)
+            for j in range(i * i, number + 1, i):
+                is_prime[j] = False
+
+    return primes
+
+
 def rabin_miller_primality_test(n, k=40):
-    """ Tarkistaa onko luku alkuluku Rabin-Millerin algoritmilla.
+    """ Tarkistaa onko luku alkuluku Rabin-Millerin algoritmilla. Aikavaativuus O(k log^3 n).
 
     Args:
         n (int): luku
@@ -37,11 +60,11 @@ def rabin_miller_primality_test(n, k=40):
     # Parilliset tai ykkösestä pienemmät luvut eivät ole alkulukuja
     if n <= 1 or n % 2 == 0:
         return False
-        
+
     r = 0
     s = n - 1
 
-    # selvitetään suurin kahden potenssi, jolla 2^r * s = n - 1
+    # Selvitetään suurin kahden potenssi, joka jakaa luvun n - 1
     while s % 2 == 0:
         r += 1
         s //= 2

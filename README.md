@@ -16,6 +16,7 @@ Tähän repositorioon palautetaa Helsingin yliopiston aineopintojen harjoitusty�
 * [Viikko 3](./dokumentaatio/viikkoraportti-03.md)
 * [Viikko 4](./dokumentaatio/viikkoraportti-04.md)
 * [Viikko 5](./dokumentaatio/viikkoraportti-05.md)
+* [Viikko 6](./dokumentaatio/viikkoraportti-06.md)
 
 ## **Käyttöohje**
 
