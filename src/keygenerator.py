@@ -3,29 +3,44 @@ from primegenerator import generate_prime_pair
 from utils import random_between, greatest_common_factor, modular_inverse
 
 
-def generate_key_pair(key_size):
-    """ Luo julkisen ja yksityisen avainparin.
+class KeyGenerator:
+    """ Luokka avainparin luomiseen.
 
-    Args:
-        key_size (int): avaimen koko
-
-    Returns:
-        tuple: julkinen ja yksityinen avainpari
+    Attributes:
+        public_exponent (int): julkinen eksponentti
+        private_exponent (int): yksityinen eksponentti
+        modulus (int): modulus
     """
 
-    print(f"\nGenerating key pair with {key_size} bits\n")
-    (p, q) = generate_prime_pair(key_size)
-    print(f"\nGenerated prime pair: {p}, {q}\n")
-    modulus = p * q
+    def __init__(self):
+        self.public_exponent = 0
+        self.private_exponent = 0
+        self.modulus = 0
 
-    while True:
-        public_exponent = random_between(
-            pow(2, key_size - 1), pow(2, key_size))
-        if greatest_common_factor(public_exponent, (p - 1) * (q - 1)) == 1:
-            break
+    def generate_key_pair(self, key_size):
+        """ Luo julkisen ja yksityisen avainparin.
 
-    print(f"\nGenerated random number: {public_exponent}\n")
-    private_exponent = modular_inverse(public_exponent, (p - 1) * (q - 1))
-    public_key = (modulus, public_exponent)
-    private_key = (modulus, private_exponent)
-    return (public_key, private_key)
+        Args:
+            key_size (int): avaimen koko
+        """
+
+        (prime1, prime2) = generate_prime_pair(key_size)
+        modulus = prime1 * prime2
+
+        while True:
+            public_exponent = random_between(
+                pow(2, key_size - 1), pow(2, key_size))
+            if greatest_common_factor(public_exponent, (prime1 - 1) * (prime2 - 1)) == 1:
+                break
+
+        private_exponent = modular_inverse(
+            public_exponent, (prime1 - 1) * (prime2 - 1))
+        self.public_exponent = public_exponent
+        self.private_exponent = private_exponent
+        self.modulus = modulus
+
+    def get_public_key(self):
+        return (self.modulus, self.public_exponent)
+
+    def get_private_key(self):
+        return (self.modulus, self.private_exponent)

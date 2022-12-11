@@ -24,7 +24,7 @@ def rabin_miller_primality_test(n, k=40):
 
     Args:
         n (int): luku
-        k (int, optional): testien määrä. Oletuksena 128.
+        k (int, optional): testien määrä. Oletuksena 40.
 
     Returns:
         bool: True jos luku on alkuluku, muuten False
@@ -59,7 +59,7 @@ def rabin_miller_primality_test(n, k=40):
         if x == 1 or x == n - 1:
             continue
 
-        # Jos x != n - 1 ja x != n - 1 , testataan seuraavat 2^r - 1 kertaa
+        # Jos x != 1 ja x != n - 1 , testataan seuraavat 2^r - 1 kertaa
         for _ in range(r - 1):
 
             # Lasketaan x^2 mod n

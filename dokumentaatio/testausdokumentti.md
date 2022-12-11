@@ -8,7 +8,7 @@ Tässä projektissa on toteutettu automaatiotestit yksikkötestien tasolla hyöd
 
 Testikattavuus on 98%.
 
-![coverage](./images/coverage-report.png)
+![coverage](../images/coverage-report.png)
 
 ## Testien suorittaminen
 

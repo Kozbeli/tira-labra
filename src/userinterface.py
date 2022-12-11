@@ -9,7 +9,7 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.stacklayout import StackLayout
 from kivy.uix.widget import Widget
 from cypher import Cypher
-from newkeygenerator import NewKeyGenerator
+from keygenerator import KeyGenerator
 import time
 
 
@@ -17,7 +17,7 @@ class UserInterface(BoxLayout):
     """ Käyttöliittymä.
 
     Attributes:
-        key_generator (NewKeyGenerator): avainparin generoija
+        key_generator (keyGenerator): avainparin generoija
         slider_key_size (int): sliderin arvo
         slider_key_size_text (str): sliderin arvo tekstimuodossa
         encrypted_message (int): salattu viesti
@@ -28,7 +28,7 @@ class UserInterface(BoxLayout):
         decryption_time (str): purun kesto
     """
 
-    key_generator = NewKeyGenerator()
+    key_generator = KeyGenerator()
 
     slider_key_size = 512
     slider_key_size_text = StringProperty("key size")

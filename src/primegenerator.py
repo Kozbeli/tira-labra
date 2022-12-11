@@ -1,7 +1,7 @@
 from utils import random_between, rabin_miller_primality_test
 
 
-def is_prime(n):
+def is_prime(number):
     """ Tarkistaa onko luku alkuluku.
 
     Args:
@@ -27,14 +27,14 @@ def is_prime(n):
                     859, 863, 877, 881, 883, 887, 907, 911, 919, 929, 937, 
                     941, 947, 953, 967, 971, 977, 983, 991, 997, 1009]
 
-    if n in small_primes:
+    if number in small_primes:
         return True
 
-    for p in small_primes:
-        if n % p == 0:
+    for prime in small_primes:
+        if number % prime == 0:
             return False
 
-    return rabin_miller_primality_test(n)
+    return rabin_miller_primality_test(number)
 
 
 def generate_prime_number(n):
@@ -47,11 +47,10 @@ def generate_prime_number(n):
         int: alkuluku
     """
 
-    # print(f"\nGenerating large prime number with {n} bits\n")
     while True:
-        p = random_between(pow(2, n - 1), pow(2, n))
-        if is_prime(p):
-            return p
+        prime = random_between(pow(2, n - 1), pow(2, n))
+        if is_prime(prime):
+            return prime
 
 
 def generate_prime_pair(n):
@@ -64,10 +63,9 @@ def generate_prime_pair(n):
         tuple: alkulukupari
     """
 
-    # print(f"\nGenerating prime pair with {n} bits\n")
-    p = generate_prime_number(n)
-    q = generate_prime_number(n)
+    prime1 = generate_prime_number(n)
+    prime2 = generate_prime_number(n)
 
-    while p == q:
-        q = generate_prime_number(n)
-    return (p, q)
+    while prime1 == prime2:
+        prime2 = generate_prime_number(n)
+    return (prime1, prime2)
