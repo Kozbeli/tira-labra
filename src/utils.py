@@ -13,14 +13,13 @@ def euclidean(a, b):
     """
 
     while a != 0:
-        print(f"Calculating euclidean of {a} and {b}")
         temp = a
         a = b % a
         b = temp
     return b
 
 
-def rabin_miller_primality_test(n, k=128):
+def rabin_miller_primality_test(n, k=40):
     """ Tarkistaa onko luku alkuluku Rabin-Millerin algoritmilla.
 
     Args:
@@ -31,23 +30,42 @@ def rabin_miller_primality_test(n, k=128):
         bool: True jos luku on alkuluku, muuten False
     """
 
-    print(f"\nTesting primality of {n} with {k} rounds of Miller-Rabin\n")
+    # Luvut 2 ja 3 ovat alkulukuja
     if n == 2 or n == 3:
         return True
+
+    # Parilliset tai ykkösestä pienemmät luvut eivät ole alkulukuja
     if n <= 1 or n % 2 == 0:
         return False
+        
     r = 0
     s = n - 1
+
+    # selvitetään suurin kahden potenssi, jolla 2^r * s = n - 1
     while s % 2 == 0:
         r += 1
         s //= 2
+
+    # Todenäköisyys, että luku on alkuluku on 1 - 1/4^k
     for _ in range(k):
+
+        # Arvotaan satunnainen luku väliltä [2, n - 1]
         a = random_between(2, n - 1)
+
+        # Lasketaan a^s mod n
         x = pow(a, s, n)
+
+        # Jos x = 1 tai x = n - 1, luku on todennäköisesti alkuluku
         if x == 1 or x == n - 1:
             continue
+
+        # Jos x != n - 1 ja x != n - 1 , testataan seuraavat 2^r - 1 kertaa
         for _ in range(r - 1):
+
+            # Lasketaan x^2 mod n
             x = pow(x, 2, n)
+
+            # Jos x = n - 1, luku on todennäköisesti alkuluku
             if x == n - 1:
                 break
         else:
@@ -66,8 +84,6 @@ def random_between(a, b):
         int: satunnainen luku
     """
 
-    print(f"\nGenerating random number in range {a} to {b}\n")
-
     return random.randint(a, b)
 
 
@@ -82,7 +98,6 @@ def greatest_common_factor(a, b):
         int: suurin yhteinen tekijä
     """
 
-    print(f"\nCalculating greatest common divisor of {a} and {b}\n")
     return euclidean(a, b)
 
 

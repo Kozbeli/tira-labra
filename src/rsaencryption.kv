@@ -4,12 +4,13 @@ UserInterface:
 
 
 <UserInterface>:
+    # Tämä on käyttöliittymä, joka sisältää kaikki komponentit.
     BoxLayout:
         orientation: "vertical"
         spacing: "10dp"
         Slider:
             id: my_slider
-            min: 4
+            min: 9
             max: 12
             value: 9
             step: 1
@@ -22,7 +23,7 @@ UserInterface:
             Label:
                 # text: str(int(my_slider.value))
                 text: root.slider_key_size_text
-                font_name: "fonts/Lcd.ttf"
+                font_name: "FreeMono"
                 font_size: "80dp"
                 color: 0, 1, 0, 1
             ProgressBar:
@@ -35,61 +36,63 @@ UserInterface:
                 on_press: root.handle_generate_key_pair()
                 # disabled: not root.count_enabled
             Label:
-                text: root.generation_time
-                font_name: "fonts/Lcd.ttf"
+                text: root.generation_time + " sec"
+                font_name: "FreeMono"
                 font_size: "30dp"
-                color: 0, 1, 0, 1 
+                color: 0, 1, 0, 1
         BoxLayout:
             orientation: "vertical"
             spacing: "5dp"
             TextInput:
                 id: message_input
-                size_hint: None, 1
+                size_hint: None, 2
                 width: root.width
-                text: ""
-                multiline: True   
+                text: "Hello Bob, this is Alice."
+                multiline: False   
             Button:
                 text: "Encrypt"
                 on_press: root.handle_encryption(message_input) 
                 # disabled: not root.count_enabled
             Label:
-                id: encrypted_message
+                text: root.encryption_time + " sec"
+                font_name: "FreeMono"
+                font_size: "20dp"
+                color: 0, 1, 0, 1
+            Label:
                 text_size: root.width, None
                 size: self.texture_size
                 halign: "center"
                 text: "Encrypted message:"
-                font_name: "fonts/Lcd.ttf"
+                font_name: "FreeMono"
                 font_size: "20dp"
-                color: 0, 1, 0, 1    
+                color: 0, 1, 0, 1
             Label:
                 id: encrypted_message
                 text_size: root.width, None
                 size: self.texture_size
                 halign: "center"
                 text: root.encrypted_message_text
-                font_name: "fonts/Lcd.ttf"
+                font_name: "FreeMono"
                 font_size: "20dp"
-                color: 0, 1, 0, 1   
+                color: 0, 1, 0, 1
         BoxLayout:
             orientation: "vertical"
-            spacing: "5dp"
-            TextInput:
-                id: encrypted_message_input
-                size_hint: None, 1
-                width: root.width
-                text: ""
-                multiline: True   
+            spacing: "5dp" 
             Button:
                 text: "Decrypt"
-                on_press: root.handle_decryption(encrypted_message_input) 
+                on_press: root.handle_decryption() 
                 # disabled: not root.count_enabled
             Label:
-                id: encrypted_message
+                text: root.decryption_time + " sec"
+                font_name: "FreeMono"
+                font_size: "20dp"
+                color: 0, 1, 0, 1 
+            Label:
                 text_size: root.width, None
                 size: self.texture_size
                 halign: "center"
                 text: "Decrypted message:"
-                font_name: "fonts/Lcd.ttf"
+                font_name: "FreeMono"
                 font_size: "20dp"
                 color: 0, 1, 0, 1    
             Label:
@@ -98,58 +101,6 @@ UserInterface:
                 size: self.texture_size
                 halign: "center"
                 text: root.decrypted_message_text
-                font_name: "fonts/Lcd.ttf"
+                font_name: "FreeMono"
                 font_size: "20dp"
-                color: 0, 1, 0, 1    
-
-            
-      
-
-
-
-# <UserInterface>:
-#     cols: 3
-#     ToggleButton:
-#         text: "OFF"
-#         on_state: root.on_toggle_button_state(self)
-#         size_hint: None, 1
-#         width: "100dp"
-#     Button:
-#         text: "Count"
-#         on_press: root.on_button_click()
-#         disabled: not root.count_enabled
-#     Label:
-#         text: root.my_text
-#         font_name: "fonts/Lcd.ttf"
-#         font_size: "80dp"
-#         color: 1, .5, 1, 1
-#     Switch:
-#         id: my_switch
-#         on_active: root.on_switch_active(self)
-#         size_hint: None, 1
-#         width: "100dp"
-#         active: True
-#     Slider:
-#         id: my_slider
-#         min: 0
-#         max: 100
-#         value: 50
-#         # on_value: root.on_slider_value(self)
-#         orientation: "vertical"
-#         disabled: not my_switch.active
-#     BoxLayout:
-#         orientation: "vertical"
-#         Label:
-#             text: str(int(my_slider.value))
-#         ProgressBar:
-#             max: 100
-#             value: my_slider.value
-#     TextInput:
-#         id: my_txt_input
-#         size_hint: None, 1
-#         width: "100dp"
-#         text: "foo"
-#         multiline: False
-#         on_text_validate: root.on_text_validate(self)
-#     Label:
-#         text: "Your name is: " + root.text_input_str
+                color: 0, 1, 0, 1

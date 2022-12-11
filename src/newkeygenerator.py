@@ -4,6 +4,14 @@ from utils import random_between, greatest_common_factor, modular_inverse
 
 
 class NewKeyGenerator:
+    """ Luokka avainparin luomiseen.
+
+    Attributes:
+        public_exponent (int): julkinen eksponentti
+        private_exponent (int): yksityinen eksponentti
+        modulus (int): modulus
+    """
+
     def __init__(self):
         self.public_exponent = 0
         self.private_exponent = 0
@@ -19,9 +27,7 @@ class NewKeyGenerator:
             tuple: julkinen ja yksityinen avainpari
         """
 
-        print(f"\nGenerating key pair with {key_size} bits\n")
         (p, q) = generate_prime_pair(key_size)
-        print(f"\nGenerated prime pair: {p}, {q}\n")
         modulus = p * q
 
         while True:
@@ -30,7 +36,6 @@ class NewKeyGenerator:
             if greatest_common_factor(public_exponent, (p - 1) * (q - 1)) == 1:
                 break
 
-        print(f"\nGenerated random number: {public_exponent}\n")
         private_exponent = modular_inverse(public_exponent, (p - 1) * (q - 1))
         self.public_exponent = public_exponent
         self.private_exponent = private_exponent

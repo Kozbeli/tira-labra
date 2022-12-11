@@ -6,5 +6,6 @@ päivä | aika | mitä tein
 11.11.|4     | Alustettiin sovellus ja perehdyttiin alkulukujen teoriaan
 19.11.|5     | Avainaparien sekä alkulukujen generointi.
 26.11.|3     | Testien kirjoittamista.
+3.12. |6     | Viestin salaus ja salauksen purku, refaktorointia, kommentointia ja testejä
 Yhteensä|15   |
 

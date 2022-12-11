@@ -1,12 +1,15 @@
+from userinterface import UserInterface
+from kivy.app import App
+from kivy.config import Config
 import kivy
 kivy.require('2.1.0')
 
-from kivy.config import Config
 Config.set('graphics', 'width', '1024')
 Config.set('graphics', 'height', '768')
 
-from kivy.app import App
-from userinterface import UserInterface
+from cypher import Cypher
+from newkeygenerator import NewKeyGenerator
+import time
 
 
 class RsaEncryptionApp(App):
@@ -14,3 +17,12 @@ class RsaEncryptionApp(App):
 
 
 RsaEncryptionApp().run()
+
+
+def main():
+    cypher = Cypher()
+    key_generator = NewKeyGenerator()
+
+
+if __name__ == "__main__":
+    main()

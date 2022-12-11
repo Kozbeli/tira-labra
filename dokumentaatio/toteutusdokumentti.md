@@ -16,4 +16,14 @@ Nyt jos `Alice` haluaa lähettää salatun viestin `Bobille`, tulee `Alicen` ens
 
 Näin Kummankin yksityinen avain on pysynyt piilossa ja ainoastaan julkinen avain sekä salattu viesti on paljastunut muulle liikenteelle. Selkokielinen viesti on ollut näkyvillä vain lähettäjällä sekä vastaanottajalla.
 
-### Aikavaativuus
+### Suorituskyky
+
+avaimen koko (bit) | avainparin generointi (sec) | viestin salaus (sec) | salauksen purku (sec)
+-------------------|-----------------------------|----------------------|---------------------- 
+64                 |0.00836801528930664          |4.982948303222656e-05 |7.891654968261719e-05
+128                |0.014656305313110352         |5.936622619628906e-05 |0.00011777877807617188
+256                |0.04590725898742676          |0.00032520294189453125|0.0007309913635253906
+512                |0.17227673530578613          |0.0017366409301757812 |0.0036115646362304688
+1024               |1.0259060859680176           |0.010691404342651367  |0.023462772369384766
+2048               |10.3712477684021             |0.08822202682495117   |0.1667191982269287
+4096               |145.04743146896362           |0.5353426933288574    |1.2123470306396484

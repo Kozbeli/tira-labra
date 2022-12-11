@@ -14,84 +14,74 @@ import time
 
 
 class UserInterface(BoxLayout):
-    slider_key_size = 0
-    slider_key_size_text = StringProperty("key size")
+    """ Käyttöliittymä.
+
+    Attributes:
+        key_generator (NewKeyGenerator): avainparin generoija
+        slider_key_size (int): sliderin arvo
+        slider_key_size_text (str): sliderin arvo tekstimuodossa
+        encrypted_message (int): salattu viesti
+        encrypted_message_text (str): salattu viesti tekstimuodossa
+        decrypted_message_text (str): purettu viesti tekstimuodossa
+        generation_time (str): avaimenparin generoinnin kesto
+        encryption_time (str): salauksen kesto
+        decryption_time (str): purun kesto
+    """
 
     key_generator = NewKeyGenerator()
-    public_key = 0
-    private_key = 0
-    key_pair = (0, 0)
-    key_pair_text = StringProperty("key pair")
-    generation_time = StringProperty("0")
 
-    message_input = StringProperty("")
+    slider_key_size = 512
+    slider_key_size_text = StringProperty("key size")
+
     encrypted_message = 0
     encrypted_message_text = StringProperty("...")
     decrypted_message_text = StringProperty("...")
 
+    generation_time = StringProperty("0")
+    encryption_time = StringProperty("0")
+    decryption_time = StringProperty("0")
+
     def handle_generate_key_pair(self):
+        """ Generoi uuden avaimenparin ja laskee sen keston."""
+
         start = time.time()
         self.key_generator.generate_key_pair(self.slider_key_size)
         end = time.time()
         self.generation_time = str(end - start)
 
     def handle_slider_change(self, widget):
+        """ Käsittelee sliderin muutoksen ja päivittää näytön.
+
+        Args:
+            widget (Slider): slider
+        """
+
         self.slider_key_size = pow(2, int(widget.value))
         self.slider_key_size_text = str(pow(2, int(widget.value)))
 
     def handle_encryption(self, widget):
-        self.logger("start encryption")
-        self.message_input = str(widget.text)
-        self.encrypted_message = Cypher.encrypt(
-            self, self.message_input, self.key_generator.get_public_key())
-        self.encrypted_message_text = str(self.encrypted_message)
-        self.logger("end encryption")
+        """ Käsittelee viestin salauksen ja laskee sen keston.
 
-    def handle_decryption(self, widget):
-        self.logger("start decryption")
+        Args:
+            widget (TextInput): tekstikenttä
+        """
+
+        start = time.time()
+        self.encrypted_message = Cypher.encrypt(
+            self, str(widget.text), self.key_generator.get_public_key())
+        end = time.time()
+        self.encrypted_message_text = str(self.encrypted_message)
+        self.encryption_time = str(end - start)
+
+    def handle_decryption(self):
+        """ Käsittelee salauksen purun ja laskee sen keston.
+
+        Args:
+            widget (TextInput): tekstikenttä
+        """
+
+        start = time.time()
         self.decrypted_message_text = Cypher.decrypt(
             self, self.encrypted_message, self.key_generator.get_private_key())
-        self.logger("end decryption")
-
-    def logger(self, phase=""):
-        print("")
-        print(f"phase: {phase}")
-        print("")
-        print(f"message input: {self.message_input}")
-        print(f"encrypted message: {self.encrypted_message}")
-        print(f"encrypted message text: {self.encrypted_message_text}")
-        print(f"decrypted message text: {self.decrypted_message_text}")
-        print("")
-
-
-# class UserInterface(GridLayout):
-#     count = 0
-#     count_enabled = BooleanProperty(False)
-#     my_text = StringProperty("1")
-#     text_input_str = StringProperty("foo")
-#     # slider_value_txt = StringProperty("Value")
-
-#     def on_button_click(self):
-#         print("Button clicked")
-#         if self.count_enabled:
-#             self.count += 1
-#             self.my_text = str(self.count)
-
-#     def on_toggle_button_state(self, widget):
-#         print("toggle state: " + widget.state)
-#         if widget.state == "normal":
-#             widget.text = "OFF"
-#             self.count_enabled = False
-#         else:
-#             widget.text = "ON"
-#             self.count_enabled = True
-
-#     def on_switch_active(self, widget):
-#         print("Switch: " + str(widget.active))
-
-#     # def on_slider_value(self, widget):
-#         # print("Slider: " + str(int(widget.value)))
-#         # self.slider_value_txt = str(int(widget.value))
-
-#     def on_text_validate(self, widget):
-#         self.text_input_str = widget.text
+        end = time.time()
+        self.decryption_time = str(end - start)
