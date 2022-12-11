@@ -1,6 +1,6 @@
 # **RSA-salaus**
 
-Tähän repositorioon palautetaa Helsingin yliopiston aineopintojen harjoitustyö kurssilla Tietorakenteet ja algoritmit.
+Tähän repositorioon palautetaa Helsingin yliopiston aineopintojen harjoitustyö kurssilta Tietorakenteet ja algoritmit.
 
 ## **Dokumentaatio**
 
@@ -38,9 +38,4 @@ poetry run invoke test
 ### Raportoi testikattavuus komennolla
 ```
 poetry run invoke coverage-report
-```
-
-### Suorita laatutarkistus komennolla
-```
-poetry run invoke lint
 ```

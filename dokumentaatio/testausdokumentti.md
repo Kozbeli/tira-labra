@@ -2,12 +2,17 @@
 
 ## Yksikkötestaus
 
-Tässä projektissa on toteutettu automaatiotestit yksikkötestien tasolla hyödyntäen pythonin unittest kirjastoa. Testeissä otetaan huomioon kaikki moduulit lukuunottamatta pääohjelmaa `main`. Lisäksi moduulissa `primegenerator` jää tarkistamatta haara, jossa funktio luo alkulukuparin, mutta näiden lukujen samanarvoisuutta ei kyetä testien avulla vertaamaan. Tämä johtuu siitä, että alkulukujen generointi pohjautuu satunnaisuuteen.
+Tässä projektissa on toteutettu automaatiotestit yksikkötestien tasolla hyödyntäen pythonin unittest kirjastoa. Testeissä otetaan huomioon kaikki moduulit lukuunottamatta pääohjelmaa `main`. Lisäksi moduulissa `primegenerator` jää tarkistamatta haara, jossa funktio luo alkulukuparin, mutta näiden lukujen samanarvoisuutta ei kyetä testien avulla vertaamaan.
 
+## Testikattavuus
+
+Testikattavuus on 97%.
+
+![coverage](../images/coverage-report.png)
 
 ## Suorituskyky
 
-Sovelluksessa voi generoida avaimia pituuksilla `[512< n < 4096] | (n = 2^i, 9<= i <= 12)`. Tässä on joitakin mitattuja tuloksia avainparin generoinnista, viestin salauksesta sekä salauksen purkamisesta.
+Sovelluksessa voi generoida avaimia pituuksilla `[512 < n < 4096] | (n = 2^i, 9<= i <= 12)`. Tässä on joitakin mitattuja tuloksia avainparin generoinnista, viestin salauksesta sekä salauksen purkamisesta.
 
 avaimen koko (bit) | avainparin generointi (sec) | viestin salaus (sec) | salauksen purku (sec)
 -------------------|-----------------------------|----------------------|---------------------- 
@@ -15,12 +20,6 @@ avaimen koko (bit) | avainparin generointi (sec) | viestin salaus (sec) | salauk
 1024               |0.56                         |0.037                 |0.032
 2048               |15.66                        |0.012                 |0.17
 4096               |35.10                        |0.59                  |1.25
-
-## Testikattavuus
-
-Testikattavuus on 97%.
-
-![coverage](../images/coverage-report.png)
 
 ## Testien suorittaminen
 
