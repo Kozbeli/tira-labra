@@ -12,7 +12,7 @@ Testikattavuus on 97%.
 
 ## Suorituskyky
 
-Sovelluksessa voi generoida avaimia pituuksilla `[512 < n < 4096] | (n = 2^i, 9<= i <= 12)`. Tässä on joitakin mitattuja tuloksia avainparin generoinnista, viestin salauksesta sekä salauksen purkamisesta.
+Sovelluksessa voi generoida avaimia pituuksilla `[512 < n < 4096] | (n = 2^i, 9 <= i <= 12)`. Tässä on joitakin mitattuja tuloksia avainparin generoinnista, viestin salauksesta sekä salauksen purkamisesta.
 
 avaimen koko (bit) | avainparin generointi (sec) | viestin salaus (sec) | salauksen purku (sec)
 -------------------|-----------------------------|----------------------|---------------------- 
