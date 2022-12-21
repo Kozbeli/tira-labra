@@ -1,7 +1,7 @@
 
 # Määrittelydokumentti
 
-## Projektikuvas
+## Projektikuvaus
 
 RSA on algoritmi, jota käytetään julkisen avaimen salaamiseen tietoliikenteessä. RSA-salauksen toiminta perustuu julkiseen ja yksityiseen avaimeen sekä oletukseen siitä, että yksityistä avainta ei nykytekniilalla voida johtaa julkisesta avaimesta. Tässä projektissa syvennyn tarkemmin RSA-salauksen toimintaan ja toteutan ohjelman, jossa hyödynnetään RSA-salausta syötetyn tekstin salaamiseksi ja purkamiseksi.
 
