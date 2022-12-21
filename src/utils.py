@@ -20,7 +20,7 @@ def euclidean(a, b):
 
 
 def sieve_of_eratosthenes(number=1000):
-    """ Luo suuren alkulukulistan. Aikavaativuus O(n log log n).
+    """ Luo pienten alkulukujen listan. Aikavaativuus O(n log log n).
 
     Args:
         number (int): luku
